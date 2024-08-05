@@ -1,9 +1,21 @@
 import axios from 'axios'
 const baseUrl = '/api/blogs'
 
-const getAll = () => {
-  const request = axios.get(baseUrl)
-  return request.then(response => response.data)
+const getAll = async ({config}) => {
+
+  const request = await axios.get(baseUrl, config)
+  return request.data
 }
 
-export default { getAll }
+const createBlog = async ({config, blog})=>{
+  const res = await axios.post(baseUrl, blog, config)
+  return res.data;
+}
+
+const updateBlog = async ({blog, config})=>{
+  const updatedBlog = await axios.put(`${baseUrl}/${blog.id}`, blog, config)
+}
+const deleteBlog = async ({blog, config})=>{
+  const deletedBlog = await axios.delete(`${baseUrl}/${blog.id}`, config)
+}
+export default { getAll, createBlog, updateBlog, deleteBlog }

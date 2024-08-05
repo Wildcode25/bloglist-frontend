@@ -23,7 +23,7 @@ const Blog = ({ blog, user }) => {
   };
   if (visible !== null)
     return (
-      <div style={{ textAlign: "center", border: "black solid 3px" }}>
+      <div style={{ textAlign: "center", border: "black solid 2px" }}>
         <h2>
           {blog.title}{" "}
           <button onClick={() => setVisible(!visible)}>
